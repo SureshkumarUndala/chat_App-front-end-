@@ -43,6 +43,7 @@ const SideDrawer = () => {
 
   }
   const accesschat = async(userId) =>{
+   
     setLoadingChat(true)
     try {
       setLoading(true)
@@ -51,8 +52,22 @@ const SideDrawer = () => {
           Authorization: "Bearer " + user?.user?.token
         }
       })
-      setSelectedChats(data)
+     // if chat is already existed chat , update the chat state.otherwise create newChat
+
+     if(data.newChat){
+      // console.log(chats, data.newChat)
+      setChats([...chats, data.newChat[0]])
+      setSelectedChats(data.newChat[0])
+
+     }
+     if(data.isChat){
+            setSelectedChats(data.isChat[0])
+
+
+     }
+    
       setLoadingChat(false)
+      setisDrawopen(false)
    
     }
     catch (err) {
@@ -136,7 +151,10 @@ const SideDrawer = () => {
 
         anchor='left'
         open={isDrawopen}
-        onClose={() => setisDrawopen(false)}>
+        onClose={() => {
+          setisDrawopen(false) 
+          setLoading(false)}
+          }>
         <Box p={2} width="300px" textAlign="center">
           <Typography variant='h6' color="blue" marginBottom="20px">Search User</Typography>
           <Stack direction="row" justifyContent="center">

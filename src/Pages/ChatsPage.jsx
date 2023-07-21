@@ -1,17 +1,26 @@
 import { Box } from '@mui/material'
 import React from 'react'
 import SideDrawer from "./../components/miscallaneous/SideDrawer"
- const ChatsPage = () => {
+import Mychats from '../components/miscallaneous/Mychats'
+import { ChatState } from '../context/ChatProvider'
+import ChatBox from '../components/miscallaneous/ChatBox'
 
+
+const ChatsPage = () => {
+
+  const { user } = ChatState()
 
   return (
-    <div style={{width:"98.5%"}}>
-      <SideDrawer/>
-      <Box>
-        {/* {user && <MyChats/>} 
-        {user && <ChatBox/>} */}
+    <Box style={{ width: "98.5%" }}>
+      <SideDrawer />
+     <Box display="flex" > 
+      {user && <Mychats/>}
+         {user && <ChatBox/>}
       </Box>
-    </div>
+       
+ 
+
+    </Box>
   )
 }
 

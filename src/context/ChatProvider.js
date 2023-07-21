@@ -9,7 +9,7 @@ const ChatProvider = ({children})=>{
     const navigate = useNavigate()
     const [user, setUser] = useState()
     const [selectedChats, setSelectedChats] = useState()
-    const [chats, setChats] = useState()   // for accessing chating msgs from users
+    const [chats, setChats] = useState([])   // for accessing chating msgs from users
     
     useEffect(()=>{
       const userInfo = JSON.parse(localStorage.getItem("user_Info"))

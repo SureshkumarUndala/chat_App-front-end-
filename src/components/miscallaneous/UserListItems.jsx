@@ -3,13 +3,15 @@ import React from "react";
 
 
 
-const UserListItems = ({user, handeleFunction}) => {
+const UserListItems = ({user, handleFunction }) => {
     
 
     return (
-        <Box onClick = {handeleFunction}>
+        <Box onClick = {handleFunction}
+     
+        >
             <List  >
-                <ListItemButton>
+                <ListItemButton sx={{backgroundColor:"lightgray"} } >
                     <ListItemIcon>
                         <ListItemAvatar>
                             <Avatar  src={user?.pic}> </Avatar>
